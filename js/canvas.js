@@ -1,22 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const lblScore = document.querySelector("#score");
-  const contenedor = document.querySelector("#contenedor");
-  const inicioX = 280;
-  const inicioY = 70;
+const jugar = document.querySelector("button");
+const beep = new Audio("../audio/beep.wav");
+beep.crossOrigin = "anonymous";
+const winnerPlay = new Audio("../audio/winner.wav");
+winnerPlay.crossOrigin = "anonymous";
+const dieadSound = new Audio("../audio/died.mp3");
+dieadSound.crossOrigin = "anonymous";
+const lblScore = document.querySelector("#score");
+const contenedor = document.querySelector("#contenedor");
+const inicioX = 280;
+const inicioY = 70;
 
-  const sonido = new Audio("../audio/beep.wav");
-  sonido.crossOrigin='anonymous';
-
-  const winnerPlay = new Audio("../audio/winner.wav");
-  winnerPlay.crossOrigin = "anonymous";
-
-  const dieadSound = new Audio("../audio/died.mp3");
-  dieadSound.crossOrigin = "anonymous";
-
-  function error() {
-    sonido.play();
-  }
-
+const btnStart = document.querySelector("button");
+btnStart.addEventListener("click", () => {
   //ANIMACION REQUEST ANIMATION FRAME
 
   let frame =
@@ -55,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (jugador.puntaje <= 0) {
         lblScore.textContent = 0;
         canvas.style.display = "none";
-        contenedor.style.background = " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/over.png) ";
+        contenedor.style.background =
+          " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/over.png) ";
         contenedor.style.backgroundRepeat = "no-repeat";
         contenedor.style.backgroundPosition = "center";
         contenedor.style.backgroundSize = "80%";
@@ -69,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   let ganador = {
-    x: 690,
+    x: 700,
     y: 65,
     ancho: 10,
     alto: 20,
@@ -190,14 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let juego = {
     teclado: function () {
       // EVENTOS TECLADO
-
       document.addEventListener("keydown", juego.oprimir);
       document.addEventListener("keyup", juego.soltar);
     },
 
     oprimir: function (tecla) {
       // OPRIMIR TECLADO
-
       tecla.preventDefault();
       switch (tecla.keyCode) {
         case 37:
@@ -237,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tiempo: function () {
       // MOVIMIENTO HORIZONTAL JUGADOR
-
       jugador.x += jugador.movimiento_x;
 
       if (datos.izquierda) {
@@ -283,6 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ganador.x1 = ganador.x;
         ganador.x2 = ganador.x + ganador.ancho;
+        ganador.y1 = ganador.y;
+        ganador.y2 = ganador.y + ganador.alto;
 
         function colisiones() {
           //NO COLISIÓN DE IZQ A DER
@@ -316,7 +311,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (winner() && jugador.x2 < ganador.x1 + jugador.movimiento_x) {
           canvas.style.display = "none";
-          contenedor.style.background = " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/winner.png) ";
+          contenedor.style.background =
+            " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/winner.png) ";
           contenedor.style.backgroundRepeat = "no-repeat";
           contenedor.style.backgroundSize = "60%";
           contenedor.style.backgroundPosition = "center center";
@@ -331,28 +327,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if (colisiones() && jugador.x2 < bloques[i].x1 + jugador.movimiento_x) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_x = 0;
-          error();
+          beep.play();
         }
 
         //COLISIÓN DE DER A IZQ
         if (colisiones() && jugador.x1 - jugador.movimiento_x > bloques[i].x2) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_x = 0;
-          error();
+          beep.play();
         }
 
         //COLISIÓN DE ARRIBA HACIA ABAJO
         if (colisiones() && jugador.y2 < bloques[i].y1 + jugador.movimiento_y) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_y = 0;
-          error();
+          beep.play();
         }
 
         //COLISIÓN DE ABAJO HACIA ARRIBA
         if (colisiones() && jugador.y1 - jugador.movimiento_y > bloques[i].y2) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_y = 0;
-          error();
+          beep.play();
         }
       }
 
