@@ -1,9 +1,10 @@
 const lblScore = document.querySelector('#score'); 
 const contenedor = document.querySelector('#contenedor');
-const sonido = new Audio('../audio/beep.wav');
 const inicioX = 280;
 const inicioY = 70;
 function error (){
+	const sonido = new Audio('../audio/beep.wav');
+	sonido.crossOrigin='anonymous';
 	sonido.play();
 }
 
@@ -53,6 +54,7 @@ let jugador = {
 			contenedor.style.backgroundPosition = 'center';
 			contenedor.style.backgroundSize = '80%';
 			const dieadSound = new Audio('../audio/died.mp3');
+			dieadSound.crossOrigin='anonymous';
 			dieadSound.play();
 			setTimeout(()=>{
 				window.location.reload();
@@ -205,6 +207,7 @@ let juego = {
 				contenedor.style.backgroundSize = '60%';
 				contenedor.style.backgroundPosition = 'center center';
 				const winnerPlay = new Audio('../audio/winner.wav');
+				winnerPlay.crossOrigin='anonymous';
 				winnerPlay.play();
 				setTimeout(()=>{
 					window.location.reload();
