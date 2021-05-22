@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (jugador.puntaje <= 0) {
         lblScore.textContent = 0;
         canvas.style.display = "none";
-        contenedor.style.background = " url(../img/game.png) ";
+        contenedor.style.background = " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/over.png) ";
         contenedor.style.backgroundRepeat = "no-repeat";
         contenedor.style.backgroundPosition = "center";
         contenedor.style.backgroundSize = "80%";
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (winner() && jugador.x2 < ganador.x1 + jugador.movimiento_x) {
           canvas.style.display = "none";
-          contenedor.style.background = " url(../img/winner.png) ";
+          contenedor.style.background = " url(https://raw.githubusercontent.com/betanzos515/laberinto-canvas/main/img/winner.png) ";
           contenedor.style.backgroundRepeat = "no-repeat";
           contenedor.style.backgroundSize = "60%";
           contenedor.style.backgroundPosition = "center center";
