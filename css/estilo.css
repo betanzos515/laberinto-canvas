@@ -1,0 +1,69 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+}
+h1{
+	font-family: 'Pattaya', sans-serif;
+	font-size: 8rem;
+}
+h2{
+	color:white;
+}
+body{
+	background: #141414;
+}
+#score{
+	color:white;
+}
+
+#contenedor{
+	position:relative;
+	margin:5vh auto;
+	width:1000px;
+	height:500px;
+	-webkit-box-shadow: 1px 1px 14px 3px #FFFFFF; 
+	box-shadow: 1px 1px 14px 3px #FFFFFF;
+}
+
+#lienzo{
+	background-color: white;
+	opacity: .8;
+}
+
+#contenedor button{
+	display:block;
+	position: relative;
+	margin:5px 0;
+	padding:10px;
+	cursor:pointer;
+}
+ 
+#particles-js{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+@media all and (orientation: portrait){
+
+	#contenedor{
+		display:none;
+	}
+
+	#vertical{
+		display:block;
+		position:fixed;
+		width:100%;
+		height:100vh;
+		z-index:1;
+		background:url(../img/vertical.jpg);
+		background-size:cover;
+		background-position:center;
+	}
+}
+
+
+
+
