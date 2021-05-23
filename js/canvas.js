@@ -54,7 +54,9 @@ btnStart.addEventListener("click", () => {
         contenedor.style.backgroundRepeat = "no-repeat";
         contenedor.style.backgroundPosition = "center";
         contenedor.style.backgroundSize = "80%";
-        dieadSound.play();
+        dieadSound.play().then(response=>{
+          console.log(response )
+        }).catch(error=>console.log(error));
         setTimeout(() => {
           window.location.reload();
         }, 4000);
@@ -315,7 +317,9 @@ btnStart.addEventListener("click", () => {
           contenedor.style.backgroundRepeat = "no-repeat";
           contenedor.style.backgroundSize = "60%";
           contenedor.style.backgroundPosition = "center center";
-          winnerPlay.play();
+          winnerPlay.play().then(response=>{
+            console.log(response);
+          }).catch(error=>console.log(error));
           setTimeout(() => {
             window.location.reload();
           }, 6500);
@@ -326,21 +330,21 @@ btnStart.addEventListener("click", () => {
         if (colisiones() && jugador.x2 < bloques[i].x1 + jugador.movimiento_x) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_x = 0;
-          beep.play();
+          beep.play().catch(error=>console.log(error));
         }
 
         //COLISIÓN DE DER A IZQ
         if (colisiones() && jugador.x1 - jugador.movimiento_x > bloques[i].x2) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_x = 0;
-          beep.play();
+          beep.play().catch(error=>console.log(error));
         }
 
         //COLISIÓN DE ARRIBA HACIA ABAJO
         if (colisiones() && jugador.y2 < bloques[i].y1 + jugador.movimiento_y) {
           jugador.puntaje = jugador.puntaje - 50;
           jugador.movimiento_y = 0;
-          beep.play();
+          beep.play().catch(error=>console.log(error));
         }
 
         //COLISIÓN DE ABAJO HACIA ARRIBA
