@@ -1,17 +1,16 @@
-const jugar = document.querySelector("button");
-const beep = new Audio("../audio/beep.wav");
-beep.crossOrigin = "anonymous";
-const winnerPlay = new Audio("../audio/winner.wav");
-winnerPlay.crossOrigin = "anonymous";
-const dieadSound = new Audio("../audio/died.mp3");
-dieadSound.crossOrigin = "anonymous";
-const lblScore = document.querySelector("#score");
-const contenedor = document.querySelector("#contenedor");
-const inicioX = 280;
-const inicioY = 70;
-
 const btnStart = document.querySelector("button");
+
 btnStart.addEventListener("click", () => {
+  const beep = new Audio("../audio/beep.wav");
+  beep.crossOrigin = "anonymous";
+  const winnerPlay = new Audio("../audio/winner.wav");
+  winnerPlay.crossOrigin = "anonymous";
+  const dieadSound = new Audio("../audio/died.mp3");
+  dieadSound.crossOrigin = "anonymous";
+  const lblScore = document.querySelector("#score");
+  const contenedor = document.querySelector("#contenedor");
+  const inicioX = 280;
+  const inicioY = 70;
   //ANIMACION REQUEST ANIMATION FRAME
 
   let frame =
