@@ -4,6 +4,13 @@
 // winnerPlay.crossOrigin = "anonymous";
 // const dieadSound = new Audio("../audio/died.mp3");
 // dieadSound.crossOrigin = "anonymous";
+
+const play = document.querySelector('button');
+play.addEventListener('click',()=>{
+  const sonido = document.createElement('audio');
+  sonido.src = '../audio/beep.wav';
+  sonido.play();
+});
 const lblScore = document.querySelector("#score");
 const contenedor = document.querySelector("#contenedor");
 const inicioX = 280;
