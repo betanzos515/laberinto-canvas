@@ -8,7 +8,7 @@
 const play = document.querySelector('button');
 play.addEventListener('click',()=>{
   const sonido = document.createElement('audio');
-  sonido.src = '../laberinto/audio/beep.wav';
+  sonido.src = 'https://github.com/betanzos515/laberinto-canvas/blob/main/audio/beep.wav';
   sonido.play();
 });
 const lblScore = document.querySelector("#score");
