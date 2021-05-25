@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   let ganador = {
-    x: 690,
+    x: 700,
     y: 65,
     ancho: 10,
     alto: 20,
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     y2: null,
     color: "orange",
   };
+  
 
   // PROPIEDADES DEL OBJETO BLOQUES
 
