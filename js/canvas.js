@@ -1,26 +1,31 @@
-// const beep = new Audio("../audio/beep.wav");
-// beep.crossOrigin = "anonymous";
-// const winnerPlay = new Audio("../audio/winner.wav");
-// winnerPlay.crossOrigin = "anonymous";
-// const dieadSound = new Audio("../audio/died.mp3");
-// dieadSound.crossOrigin = "anonymous";
 
-const play = document.querySelector('button');
-play.addEventListener('click',()=>{
-  const sonido = document.createElement('audio');
-  sonido.src = 'https://github.com/betanzos515/laberinto-canvas/blob/main/audio/beep.wav';
-  sonido.play();
-});
 const lblScore = document.querySelector("#score");
 const contenedor = document.querySelector("#contenedor");
 const inicioX = 280;
 const inicioY = 70;
 
-function cargarSonido(fuente){
+function sonidoBeep(){
   const sonido = document.createElement('audio');
-  sonido.src = fuente;
-  return sonido.play();
+  sonido.src = '../audio/beep.wav';
+  return sonido;
 }
+
+function sonidoEnd(){
+  const sonido = document.createElement('audio');
+  sonido.src = '../audio/beep.wav';
+  return sonido;
+}
+
+function sonidoWinner(){
+  const sonido = document.createElement('audio');
+  sonido.src = '../audio/beep.wav';
+  return sonido;
+}
+
+let beep = sonidoBeep();
+let end = sonidoEnd();
+let winn = sonidoWinner();
+
 
 //ANIMACION REQUEST ANIMATION FRAME
 
@@ -65,7 +70,7 @@ let jugador = {
       contenedor.style.backgroundRepeat = "no-repeat";
       contenedor.style.backgroundPosition = "center";
       contenedor.style.backgroundSize = "80%";
-      cargarSonido('../audio/died.mp3');
+      end.play()
       setTimeout(() => {
         window.location.reload();
       }, 4000);
@@ -326,7 +331,7 @@ let juego = {
         contenedor.style.backgroundRepeat = "no-repeat";
         contenedor.style.backgroundSize = "60%";
         contenedor.style.backgroundPosition = "center center";
-        cargarSonido('../audio/winner.wav')
+        winn.play();
         setTimeout(() => {
           window.location.reload();
         }, 6500);
@@ -337,28 +342,25 @@ let juego = {
       if (colisiones() && jugador.x2 < bloques[i].x1 + jugador.movimiento_x) {
         jugador.puntaje = jugador.puntaje - 50;
         jugador.movimiento_x = 0;
-        cargarSonido('../audio/beep.wav');
+        beep.play();
       }
 
       //COLISIÓN DE DER A IZQ
       if (colisiones() && jugador.x1 - jugador.movimiento_x > bloques[i].x2) {
         jugador.puntaje = jugador.puntaje - 50;
         jugador.movimiento_x = 0;
-        cargarSonido('../audio/beep.wav');
       }
 
       //COLISIÓN DE ARRIBA HACIA ABAJO
       if (colisiones() && jugador.y2 < bloques[i].y1 + jugador.movimiento_y) {
         jugador.puntaje = jugador.puntaje - 50;
         jugador.movimiento_y = 0;
-        cargarSonido('../audio/beep.wav');
       }
 
       //COLISIÓN DE ABAJO HACIA ARRIBA
       if (colisiones() && jugador.y1 - jugador.movimiento_y > bloques[i].y2) {
         jugador.puntaje = jugador.puntaje - 50;
         jugador.movimiento_y = 0;
-        cargarSonido('../audio/beep.wav');
       }
     }
 
